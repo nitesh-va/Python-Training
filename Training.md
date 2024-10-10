@@ -114,9 +114,6 @@ car=thisdict = {"brand": "Ford","model":        "Mustang","year": 1964}
 update()
 pop()
 clear()
-```### Accessing Values:
-```python
-value = my_dict['key1']  # Accessing value by key
 ```
 ### Modifying Values:
 ```python
