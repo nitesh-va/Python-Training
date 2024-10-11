@@ -386,3 +386,26 @@ lst = ['dog', 'door', 'done', 'doing','do']
 result = common_prefix(lst)
 print("Common prefix:", result)
 ```
+## Roman to Integer
+
+```python
+
+def romanToInt(s):
+        roman_values  = {
+            'I'  :  1 , 'V'  :  5 , 'X'  :  10 , 'L'  :  50  , 'C'  :  100  ,  'D'  :  500 , 'M'  : 1000
+        }
+        
+        integer_value = 0
+
+        for i in range(0,len(s)):
+            if i < len(s) - 1 and roman_values[s[i]] < roman_values[s[i+1]]:
+                integer_value -= roman_values[s[i]]
+            else:
+                integer_value += roman_values[s[i]]
+        
+        print(f'integer_value:{integer_value}') 
+s='X'
+print(romanToInt(s))
+```
+# Day-3
+
