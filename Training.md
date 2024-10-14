@@ -408,4 +408,246 @@ s='X'
 print(romanToInt(s))
 ```
 # Day-3
+## Palindrome
+```python
+# Example input string
+input_string = "10, %malayalam, 01 "
 
+# Clean the string by keeping only alphanumeric characters and converting to lowercase
+cleaned_string = ''.join(char.lower() for char in input_string if char.isalnum())
+
+# Check if the cleaned string is equal to its reverse
+is_palindrome = cleaned_string == cleaned_string[::-1]
+
+# Output the result
+if is_palindrome:
+    print("palindrome.")
+else:
+    print("not a palindrome.")
+```
+
+## Max Profit
+```
+
+```
+```python
+def maxProfit(prices):
+    if len(prices) == 0: 
+            print(0)
+    else:
+        profit = 0
+        minbuy = prices[0]
+        for i in range(len(prices)):
+            profit = max(prices[i] - minbuy, profit)
+            minbuy = min(minbuy, prices[i])
+        print(f'profit:{profit}')
+prices=[4,3,2,1,0]
+print(maxProfit(prices))   
+```
+# Decorators in Python
+A decorator in Python is a function that allows you to modify the behavior of another function or method. Decorators enable adding functionality to existing functions or methods in a clean, readable, and reusable manner.
+```python
+Syntax:
+@decorator_name
+def function_name():
+    # function body
+Example of a Basic Decorator
+def my_decorator(func):
+    """
+    A simple decorator that wraps the function
+    with additional functionality.
+    """
+    def wrapper():
+        print("Something before the function runs")
+        func()  # Calling the original function
+        print("Something after the function runs")
+    return wrapper
+
+@my_decorator
+def say_hello():
+    """A simple function that prints 'Hello!'"""
+    print("Hello!")
+```
+
+# Why Use Decorators:
+Code Reusability: Decorators allow you to define reusable wrappers for functions, so you don't have to repeat code across multiple functions.
+Separation of Concerns: You can separate core logic from cross-cutting concerns like logging or error handling.
+Enhanced Readability: Applying a decorator to a function using the @decorator_name syntax makes the code cleaner and more readable.
+## Types Of Decorators:
+
+1. @staticmethod
+
+The @staticmethod decorator is used to define methods inside a class that don't need access to the instance (self) or the class (cls). They behave like regular functions but reside in the class' namespace.
+
+Example Code:
+```python
+class MathOperations:
+    @staticmethod
+    def add(a, b):
+        return a + b
+```
+# Calling the static method without creating an instance
+```python
+print(MathOperations.add(5, 3))  # Output: 8
+```
+2. @classmethod
+
+The @classmethod decorator is used to define methods that work on the class level. The method receives the class (cls) as its first argument. These methods can modify class attributes and are often used for alternative constructors.
+
+Example Code:
+```python
+class Animal:
+    species = "Mammal"
+
+    @classmethod
+    def set_species(cls, new_species):
+        cls.species = new_species
+```
+# Modifying the class attribute using a class method
+```python
+Animal.set_species("Reptile")
+print(Animal.species)  # Output: Reptile
+```
+3. @property
+
+The @property decorator is used to define a method as a property, which allows you to access it like an attribute. This is often used for getter methods, and @property can be paired with @setter to modify the behavior when setting a value.
+
+Example Code:
+```python
+class Circle:
+    def __init__(self, radius):
+        self._radius = radius
+
+    @property
+    def area(self):
+        return 3.1416 * (self._radius ** 2)
+
+c = Circle(5)
+print(c.area)  # Output: 78.54
+```
+4. @functools.lru_cache
+
+The @functools.lru_cache decorator is used to cache the results of a function, making it more efficient for repeated calls with the same arguments. It stores the results in a cache and avoids recomputation for previously computed inputs.
+
+Example Code:
+```python
+from functools import lru_cache
+
+@lru_cache(maxsize=32)
+def fibonacci(n):
+    if n < 2:
+        return n
+    return fibonacci(n-1) + fibonacci(n-2)
+
+print(fibonacci(10))  # Output: 55
+```
+5. @wraps (from functools)
+
+The @wraps decorator is used to preserve the metadata (like the docstring and function name) of the original function when wrapped by another decorator. Without @wraps, the metadata of the original function would be lost when wrapped by a decorator.
+
+Example Code:
+```python
+from functools import wraps
+
+def my_decorator(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        print("Before function")
+        result = func(*args, **kwargs)
+        print("After function")
+        return result
+    return wrapper
+
+@my_decorator
+def greet(name):
+    """Greets a person by name."""
+    print(f"Hello, {name}")
+
+greet("Alice")
+print(greet.__name__)  # Output: greet
+print(greet.__doc__)   # Output: Greets a person by name.
+```
+Note: These five decorators cover a wide range of functionality, from class-level methods to caching and preserving function metadata, and are commonly used in Python development.
+
+.get() Method for Dictionaries:
+The dict.get() method in Python is a safe way to retrieve the value of a key from a dictionary. Unlike accessing the key directly using square brackets ([]), get() allows you to specify a default value to return if the key is not found in the dictionary. If no default value is provided, it returns None.
+
+Syntax:
+```python
+dict.get(key, default=None)
+Parameters:
+key (required): The key for which the value is to be retrieved from the dictionary.
+default (optional): The value to return if the key is not found in the dictionary. If not provided, the method defaults to None.
+Example Code:
+my_dict = {'name': 'Alice', 'age': 25}
+```
+```python
+# Retrieving an Existing Key
+print(my_dict.get('name'))  # Output: Alice
+```
+```python
+# Using a Default Value if Key is Absent
+print(my_dict.get('gender', 'Not specified'))  # Output: Not specified
+```
+```python
+# Returning None When the Key is Not Found
+print(my_dict.get('address'))  # Output: None
+```
+ # Comprehensions in Python
+Comprehensions in Python are concise syntactic constructs that allow for the creation of collections such as lists, sets, or dictionaries in a clear and efficient manner. Comprehensions help make the code more readable and can often result in fewer lines of code compared to traditional loops.
+
+## Types of Comprehensions
+1.List Comprehension
+
+A list comprehension creates a new list by applying an expression to each item in an iterable, optionally filtering items with a conditional statement.
+
+Syntax:
+```python
+new_list = [expression for item in iterable if condition]
+```
+Example:
+```
+# Create a list of squares for even numbers from 0 to 9
+squares = [x**2 for x in range(10) if x % 2 == 0]
+print(squares)  # Output: [0, 4, 16, 36, 64]
+```
+2.Set Comprehension
+
+A set comprehension creates a new set in a similar way to list comprehensions, ensuring that all items are unique.
+
+Syntax:
+
+new_set = {expression for item in iterable if condition}
+Example
+```python
+# Create a set of unique vowels from a string
+unique_vowels = {char for char in 'abracadabra' if char in 'aeiou'}
+print(unique_vowels)  # Output: {'a'}
+```
+3.Dictionary Comprehension
+
+A dictionary comprehension creates a new dictionary from an iterable, where each item is transformed into a key-value pair.
+
+Syntax:
+
+new_dict = {key_expression: value_expression for item in iterable if condition}
+Example
+```python
+# Create a dictionary mapping numbers to their squares
+squares_dict = {x: x**2 for x in range(5)}
+print(squares_dict)  # Output: {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}
+```
+4.Generator Comprehension
+
+A generator comprehension is similar to list comprehensions but produces a generator object instead of a list. This is useful for large datasets where you want to save memory.
+Syntax:
+```python
+new_generator = (expression for item in iterable if condition)
+```
+#### Example:
+```python
+# Create a generator for squares of even numbers
+
+squares_gen = (x**2 for x in range(10) if x % 2 == 0)
+print(list(squares_gen))  # Output: [0, 4, 16, 36, 64]
+```
