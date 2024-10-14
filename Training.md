@@ -651,3 +651,118 @@ new_generator = (expression for item in iterable if condition)
 squares_gen = (x**2 for x in range(10) if x % 2 == 0)
 print(list(squares_gen))  # Output: [0, 4, 16, 36, 64]
 ```
+# Day-5
+## Check if number in prime or not between two numbers
+```python
+#check the prime number
+def prime(n):
+    if n <= 1:
+        return False
+    for i in range(2,(n//2) + 1):
+        if n % i == 0:
+            return False
+    return True
+#start and end range 
+def primes_in_range(start, end):
+    #stores the prime num
+    prime_numbers = []
+    for num in range(start, end):
+        if prime(num):
+            prime_numbers.append(num)
+            #return in prime lisr
+    return prime_numbers 
+
+# Example usage
+start_range = int(input("Enter the start of the range: "))
+end_range = int(input("Enter the end of the range: "))
+primes = primes_in_range(start_range, end_range)
+print(f"Prime numbers between {start_range} and {end_range}: {primes}")
+
+```
+## Using Generators 
+```python
+def is_prime(n):
+    if n <= 1:
+        return False
+    for i in range(2, int(n**0.5) + 1):  # Check up to the square root of n
+        if n % i == 0:
+            return False
+    return True
+
+def primes_in_range(start, end):
+    """Generator for prime numbers in a given range."""
+    for num in range(start, end):
+        if is_prime(num):
+            yield num  # Yield prime numbers one at a time
+
+# Example usage
+start_range = int(input("Enter the start of the range: "))
+end_range = int(input("Enter the end of the range: "))
+primes = (primes_in_range(start_range, end_range))  # Convert generator to list
+print(next(primes))  # Print the first prime number
+print(next(primes))  # Print the second prime number
+print(next(primes))  # Print the third prime number
+```
+## Fibonacci using Generators
+```python
+def fibonacci(n):
+    a, b = 0, 1
+    for j in range(n):
+        yield a
+        a, b = b, a + b
+
+# Example usage
+num = int(input("Enter the number of Fibonacci terms to generate: "))
+fib = fibonacci(num)
+
+print("Fibonacci sequence:")
+for i in fib:
+    print(i, end=' ')
+```
+## Class and Object
+### class:-
+Instance of object.
+### object:-
+Blue print of class.
+
+### Example:
+```python
+class Person:
+  def __init__(self, name, age):
+    self.name = name
+    self.age = age
+
+p1 = Person("John", 36)
+
+print(p1.name)
+print(p1.age)
+```
+## Prime number program using class
+```python
+class PrimeChecker:
+    def __init__(self, start, end):
+        self.start = start
+        self.end = end
+
+    def is_prime(self, n):
+        if n <= 1:
+            return False
+        for i in range(2, int(n//2) + 1):
+            if n% i == 0:
+                return False
+        return True
+
+    def find_primes(self):
+        primes = []
+        for num in range(self.start, self.end):
+            if self.is_prime(num):
+                primes.append(num)
+        return primes
+
+start_num = int(input("Enter the start of the range: ")) 
+end_num = int(input("Enter the end of the range: "))    
+checker = PrimeChecker(start_num, end_num)
+prime = checker.find_primes()
+print(prime)
+
+```
