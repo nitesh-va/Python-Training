@@ -12,6 +12,9 @@ https://code.visualstudio.com/
 ### **3. Set up python in vscode.**
 
 ### **4. Start coding.**
+## Few other requirements
+### Git hub and markdown
+
 #
 # Description
 
