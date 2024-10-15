@@ -55,4 +55,4 @@ This repository contains a collection of utility functions and classes in Python
 - Fibonacci Sequence Generator
 - Maximum Profit Calculator
 - Integer to Roman Converter
-- Factorial Calculator
+- Factorial Recursion 
