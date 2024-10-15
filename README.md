@@ -40,3 +40,19 @@ This repository contains a comprehensive overview of fundamental Python programm
 - [Example Problems](#example-problems)
 - [Decorators](#decorators)
 - [Comprehensions](#comprehensions)
+- [Genrators](#Genrators)
+
+# Python Utility Functions
+This repository contains a collection of utility functions and classes in Python for various purposes, including checking for prime numbers, generating Fibonacci sequences, calculating maximum profit from stock prices, converting integers to Roman numerals, and calculating factorials.
+
+## Table of Contents
+- Using stack and adjcent 
+- Sorting 
+- Prefix
+- Roman to Integer 
+- Palindrome
+- Prime Number Checker between two numbers
+- Fibonacci Sequence Generator
+- Maximum Profit Calculator
+- Integer to Roman Converter
+- Factorial Calculator
