@@ -852,4 +852,3 @@ n=int(input("Enter the number:"))
 result=factorial(n)
 print(result)
 ```
-s
