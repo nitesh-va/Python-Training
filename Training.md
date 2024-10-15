@@ -793,3 +793,48 @@ print("Fibonacci sequence:")
 for number in fib_sequence:
     print(number, end=' ')
 ```
+# Max Profit
+```python
+class Solution:
+    def maxProfit(self, prices):
+        #intial profit 0
+        profit = 0
+        #we start from 1 index from the 0 index does't have any previous value
+        for i in range(1, len(prices)):
+            #if the current i is greater than the previous value 
+            if prices[i] > prices[i - 1]:
+                #we add it to the intial profit 
+                profit += prices[i] - prices[i - 1]
+        return profit
+
+#create object
+solution = Solution()
+prices = [7,1,4,5]  # giving the list
+#returning the list to the fun 
+result = solution.maxProfit(prices) 
+print(f"Maximum profit:",result)
+```
+# Day 5
+
+## Integer to Roman
+```python
+def int_to_roman(num):
+    # Define the mapping of integers to Roman numerals using a dictionary
+    roman_dict = {
+        1000: "M", 900: "CM", 500: "D", 400: "CD",
+        100: "C", 90: "XC", 50: "L", 40: "XL",
+        10: "X", 9: "IX", 5: "V", 4: "IV", 1: "I"
+    }
+
+    roman_numeral = ""
+    for i in sorted(roman_dict.keys(), reverse=True):
+        while num >= i:
+            roman_numeral += roman_dict[i]
+            num -= i
+    
+    return roman_numeral
+
+num =int(input("Enter a number: "))
+print(int_to_roman(num))  
+
+```
