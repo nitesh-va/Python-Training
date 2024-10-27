@@ -852,3 +852,57 @@ n=int(input("Enter the number:"))
 result=factorial(n)
 print(result)
 ```
+# Remove Duplicates
+```python
+nums = [0, 1, 1, 1, 2, 3, 3, 3]
+
+min_count = 2
+max_count = 3
+result = []
+
+# Manually count occurrences
+counts = {}
+for num in nums:
+    if num in counts:
+        counts[num] += 1
+    else:
+        counts[num] = 1
+
+for num, count in counts.items():
+    if count >= min_count:
+        result.extend([num] * min_count)
+    elif count == 1:
+        result.append(num)
+    else:
+        result = None
+        break
+
+if result is not None:
+    underscores_number = len(nums) - len(result)
+    result.extend(['_'] * underscores_number)
+
+print(result)
+
+```
+# Reverse String
+```python
+def reverse_words(string):
+    words=string.split(" ")
+    rev_words=words[::-1]
+    reverse_string=" ".join(rev_words)
+    return reverse_string
+
+string="blue is sky the"
+print("Reverse of word is :",reverse_words(string))
+```
+# Rotate Array
+```python
+def reverse_words(string):
+    words=string.split(" ")
+    rev_words=words[::-1]
+    reverse_string=" ".join(rev_words)
+    return reverse_string
+
+string="blue is sky the"
+print("Reverse of word is :",reverse_words(string))
+```
